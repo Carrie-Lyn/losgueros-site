@@ -118,9 +118,15 @@ footer{background:#070605;border-top:1px solid rgba(194,146,47,.2);padding:60px 
     <span class="note">DEMO LOGIN · NOT YET ACTIVE</span>
     <div class="lock">🔒</div>
     <h2>Member Login</h2><div class="h2-es">Acceso de miembros</div>
-    <label>Email · Correo</label><input type="email" placeholder="you@example.com">
-    <label>Password · Contraseña</label><input type="password" placeholder="••••••••">
-    <a class="btn btn-red" href="members_loggedin.html">Log In · Entrar</a>
+    <form action="members_loggedin.html">
+  <label>Email · Correo</label>
+  <input type="email" placeholder="you@example.com">
+
+  <label>Password · Contraseña</label>
+  <input type="password" placeholder="••••••••">
+
+  <button class="btn btn-red" type="submit">Log In · Entrar</button>
+</form>
   </div>
   <p style="text-align:center;max-width:50ch;margin:26px auto 0;color:var(--ink-soft)">This area will be password-protected. The cards below preview what members will find inside.</p>
   <p style="text-align:center;max-width:50ch;margin:0 auto;color:#6f665c;font-style:italic">Esta área estará protegida con contraseña. Las tarjetas de abajo muestran lo que los miembros encontrarán adentro.</p>

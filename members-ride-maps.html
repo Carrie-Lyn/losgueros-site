@@ -215,7 +215,10 @@ footer{background:#070605;border-top:1px solid rgba(194,146,47,.2);padding:60px 
 <div class="mfoot">LOS GÜEROS M/C · MEMBER AREA · FOR MEMBERS ONLY · SOLO PARA MIEMBROS</div>
 
 <div id="lgBox" class="lg-overlay" onclick="lgBackdrop(event)" aria-hidden="true">
-  <button class="lg-close" type="button" onclick="lgClose()" aria-label="Close map">&times;</button>
+  <div class="lg-controls">
+    <a id="lgDl" class="lg-btn lg-dl" href="" download aria-label="Download map" title="Download map">&#x2193;</a>
+    <button class="lg-btn lg-close" type="button" onclick="lgClose()" aria-label="Close map" title="Close">&times;</button>
+  </div>
   <figure class="lg-fig">
     <img id="lgImg" src="" alt="">
     <figcaption id="lgCap"></figcaption>
@@ -227,16 +230,20 @@ footer{background:#070605;border-top:1px solid rgba(194,146,47,.2);padding:60px 
 .lg-fig{margin:0;max-width:96vw;max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:10px}
 .lg-fig img{max-width:96vw;max-height:84vh;object-fit:contain;border:2px solid var(--gold);border-radius:4px;background:#241a16}
 .lg-fig figcaption{font-family:'Oswald';text-transform:uppercase;letter-spacing:.08em;color:var(--bone);font-size:1rem}
-.lg-close{position:absolute;top:14px;right:18px;width:44px;height:44px;border:1px solid var(--gold);background:rgba(0,0,0,.4);color:var(--gold);font-size:1.8rem;line-height:1;border-radius:4px;cursor:pointer}
-.lg-close:hover{background:var(--gold);color:#1a1208}
+.lg-controls{position:absolute;top:14px;right:18px;display:flex;gap:10px;z-index:2}
+.lg-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold);background:rgba(0,0,0,.4);color:var(--gold);font-size:1.8rem;line-height:1;border-radius:4px;cursor:pointer;text-decoration:none}
+.lg-btn:hover{background:var(--gold);color:#1a1208}
+.lg-dl{font-size:1.5rem}
 </style>
 <script>
 (function(){
-  var box=document.getElementById('lgBox'), img=document.getElementById('lgImg'), cap=document.getElementById('lgCap');
+  var box=document.getElementById('lgBox'), img=document.getElementById('lgImg'), cap=document.getElementById('lgCap'), dl=document.getElementById('lgDl');
   window.lgOpen=function(el){
-    img.src=el.getAttribute('data-full');
+    var full=el.getAttribute('data-full');
     var n=el.getAttribute('data-name')||'';
-    img.alt=n; cap.textContent=n;
+    img.src=full; img.alt=n; cap.textContent=n;
+    dl.href=full;
+    dl.setAttribute('download', full.split('/').pop());
     box.classList.add('open'); box.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
   };
